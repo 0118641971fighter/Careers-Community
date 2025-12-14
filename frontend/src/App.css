@@ -10,10 +10,60 @@
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #000000;
   font-family: "Noto Sans", sans-serif;
   transition: direction 0.3s;
+}
+
+/* ============================================= */
+/*             كود الهيدر العام (Header)         */
+/* ============================================= */
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #111111;
+  border-bottom: 1px solid #333333;
+  z-index: 1000;
+}
+
+.app-header h1 {
+  color: #d4af37;
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+  margin: 0;
+}
+
+#language-selector {
+  background-color: #222222;
+  color: #d4af37;
+  border: 2px solid #333333;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
+  transition: border-color 0.3s;
+}
+
+#language-selector:focus {
+  outline: none;
+  border-color: #d4af37;
 }
 
 /* ============================================= */
@@ -52,14 +102,24 @@
 }
 
 @keyframes geometric-reveal {
-  0% { clip-path: inset(0 0 0 0); }
-  50% { clip-path: inset(10% 10% 10% 10%); }
-  80% { clip-path: inset(48% 48% 48% 48%); }
-  100% { clip-path: inset(100% 100% 100% 100%); }
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    clip-path: inset(10% 10% 10% 10%);
+  }
+  80% {
+    clip-path: inset(48% 48% 48% 48%);
+  }
+  100% {
+    clip-path: inset(100% 100% 100% 100%);
+  }
 }
 
 @keyframes fade-in-text {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ============================================= */
@@ -70,8 +130,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
+  padding-top: 80px; /* إضافة مساحة عشان المحتوى يظهر تحت الهيدر */
+  box-sizing: border-box;
 }
 
 .login-form {
@@ -89,48 +151,19 @@
   text-align: center;
 }
 
-/* تعديل هيكل الـ Header */
 .welcome-section {
   display: flex;
-  flex-direction: column; /* جعل العناصر فوق بعضها */
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 20px; /* زيادة المسافة من تحت */
-}
-
-/* تعديل ستايل محدد اللغة */
-#language-selector {
-  background-color: #222222;
-  color: #d4af37;
-  border: 2px solid #333333;
-  border-radius: 5px;
-  padding: 8px 12px;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 0.9rem;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 0.7rem center;
-  background-size: 1.2em;
-  padding-right: 2.5rem;
-  transition: border-color 0.3s;
-  margin-top: 10px; /* مسافة بين العنوان ومحدد اللغة */
-}
-
-#language-selector:focus {
-  outline: none;
-  border-color: #d4af37;
+  margin-bottom: 20px;
 }
 
 .login-form h1 {
   color: #d4af37;
   font-family: "Bebas Neue", "Noto Sans", sans-serif;
   font-size: 3rem;
-  margin-bottom: 0; /* إزالة المسافة السفلية */
+  margin-bottom: 0;
 }
 
 .login-form p {
@@ -326,66 +359,18 @@ button[type="submit"]:hover {
 }
 
 /* ============================================= */
-/*       قواعد CSS لتغيير اللغة والخط         */
-/* ============================================= */
-
-/* تخصيص الخطوط لكل لغة باستخدام الكلاسات الديناميكية */
-.lang-ar .login-form,
-.lang-ar .input-group input,
-.lang-ar .input-group label,
-.lang-ar .form-links,
-.lang-ar .register-form {
-  font-family: "Noto Sans Arabic", sans-serif;
-}
-.lang-ar .login-form h1,
-.lang-ar .login-form button[type="submit"],
-.lang-ar .register-form h2,
-.lang-ar .register-form button[type="submit"] {
-  font-family: "Noto Sans Arabic", sans-serif;
-}
-
-.lang-zh .login-form,
-.lang-zh .input-group input,
-.lang-zh .input-group label,
-.lang-zh .form-links,
-.lang-zh .register-form {
-  font-family: "Noto Sans SC", sans-serif;
-}
-.lang-zh .login-form h1,
-.lang-zh .login-form button[type="submit"],
-.lang-zh .register-form h2,
-.lang-zh .register-form button[type="submit"] {
-  font-family: "Noto Sans SC", sans-serif;
-}
-
-.lang-ja .login-form,
-.lang-ja .input-group input,
-.lang-ja .input-group label,
-.lang-ja .form-links,
-.lang-ja .register-form {
-  font-family: "Noto Sans JP", sans-serif;
-}
-.lang-ja .login-form h1,
-.lang-ja .login-form button[type="submit"],
-.lang-ja .register-form h2,
-.lang-ja .register-form button[type="submit"] {
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-/* ============================================= */
-/* ... باقي كود صفحة التقديم ... */
-/* ============================================= */
-/*            كود صفحة التقديم (محجوز)         */
+/*            كود صفحة التقديم                 */
 /* ============================================= */
 
 .application-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   width: 100vw;
   background-color: #000000;
-  padding: 20px 0;
+  padding: 100px 20px 20px; /* إضافة padding من الأعلى */
+  box-sizing: border-box;
 }
 
 .application-form {
@@ -407,12 +392,6 @@ button[type="submit"]:hover {
   font-family: "Bebas Neue", "Noto Sans", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 10px;
-}
-
-.application-form p {
-  color: #aaaaaa;
-  font-size: 0.9rem;
-  margin-bottom: 30px;
 }
 
 .radio-group {
@@ -506,16 +485,16 @@ button[type="submit"]:hover {
   border-color: #ffd700;
 }
 
+#cv-upload {
+  display: none;
+}
+
 .file-icon {
   font-size: 1.5rem;
 }
 
 .file-text {
   font-weight: 500;
-}
-
-#cv-upload {
-  display: none;
 }
 
 .file-name {
@@ -525,4 +504,60 @@ button[type="submit"]:hover {
   font-family: "Noto Sans", sans-serif;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* ============================================= */
+/*       قواعد CSS لتغيير اللغة والخط         */
+/* ============================================= */
+
+/* تخصيص الخطوط لكل لغة باستخدام الكلاسات الديناميكية */
+.lang-ar .login-form,
+.lang-ar .input-group input,
+.lang-ar .input-group label,
+.lang-ar .form-links,
+.lang-ar .register-form,
+.lang-ar .application-form {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+.lang-ar .login-form h1,
+.lang-ar .login-form button[type="submit"],
+.lang-ar .register-form h2,
+.lang-ar .register-form button[type="submit"],
+.lang-ar .application-form h1,
+.lang-ar .application-form button[type="submit"] {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+
+.lang-zh .login-form,
+.lang-zh .input-group input,
+.lang-zh .input-group label,
+.lang-zh .form-links,
+.lang-zh .register-form,
+.lang-zh .application-form {
+  font-family: "Noto Sans SC", sans-serif;
+}
+.lang-zh .login-form h1,
+.lang-zh .login-form button[type="submit"],
+.lang-zh .register-form h2,
+.lang-zh .register-form button[type="submit"],
+.lang-zh .application-form h1,
+.lang-zh .application-form button[type="submit"] {
+  font-family: "Noto Sans SC", sans-serif;
+}
+
+.lang-ja .login-form,
+.lang-ja .input-group input,
+.lang-ja .input-group label,
+.lang-ja .form-links,
+.lang-ja .register-form,
+.lang-ja .application-form {
+  font-family: "Noto Sans JP", sans-serif;
+}
+.lang-ja .login-form h1,
+.lang-ja .login-form button[type="submit"],
+.lang-ja .register-form h2,
+.lang-ja .register-form button[type="submit"],
+.lang-ja .application-form h1,
+.lang-ja .application-form button[type="submit"] {
+  font-family: "Noto Sans JP", sans-serif;
 }
