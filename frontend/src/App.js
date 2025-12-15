@@ -394,10 +394,14 @@ function App() {
                 <button type="submit">{t('sign_in_button')}</button>
               </form>
 
-              <div className="form-links">
-                <a href="#">{t('forgot_password')}</a>
-                <a href="#" onClick={() => setCurrentPage('register')}>{t('create_account')}</a>
-              </div>
+             <div className="form-links">
+  <button type="button" style={{ background: 'none', border: 'none', color: '#d4af37', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => alert('Feature coming soon!')}>
+    Forgot Password?
+  </button>
+  <button type="button" style={{ background: 'none', border: 'none', color: '#d4af37', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => setCurrentPage('register')}>
+    Create an Account
+  </button>
+</div>
             </div>
           </div>
         </div>
