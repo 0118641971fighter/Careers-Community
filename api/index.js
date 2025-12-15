@@ -2,14 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 
-// في Vercel، لازم نعمل express app داخل كل طلب
+// في Vercel، بنعمل express app داخل كل طلب
 const app = express();
 
 // استخدام الـ Middleware
 app.use(cors());
 app.use(express.json());
 
-// قاعدة بيانات مؤقتة في الذاكرة
+// قاعدة بيانات مؤقتة
 const users = [];
 
 // Route لتسجيل الدخول
@@ -47,14 +47,15 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// Route لإرسال التقديم (مؤقت للاختبار)
+// Route لإرسال التقديم
 app.post('/api/submit-application', async (req, res) => {
   try {
-    res.status(200).json({ success: true, message: 'تم استلام التقديم بنجاح (تجريبي)!' });
+    res.status(200).json({ success: true, message: 'تم إرسال التقديم بنجاح!' });
   } catch (error) {
     res.status(500).json({ success: false, message: 'حدث خطأ في الخادم.' });
   }
 });
 
-// تصدير الـ app
+// **أهم سطر:** تصدير الـ app
+// Vercel هيتعامل مع كل ملف `api/index.js` كأنه function
 module.exports = app;
