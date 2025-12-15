@@ -5,11 +5,17 @@ const bcrypt = require('bcryptjs');
 // في Vercel، بنعمل express app داخل كل طلب
 const app = express();
 
-// استخدام الـ Middleware
-app.use(cors());
+// إعدادات CORS مخصصة لـ Vercel
+app.use(cors({
+  origin: ['https://careers-community.vercel.app', 'http://localhost:3000'], // اسمح للفرونت إند على الإنترنت وجهازك
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // اسمح بهذه الطرق
+  allowedHeaders: ['Content-Type', 'Authorization'], // اسمح بهذه الرؤوس
+  credentials: true // إذا كنت تستخدم cookies أو sessions
+}));
+
 app.use(express.json());
 
-// قاعدة بيانات مؤقتة
+// قاعدة بيانات مؤقتة في الذاكرة
 const users = [];
 
 // Route لتسجيل الدخول
@@ -57,5 +63,4 @@ app.post('/api/submit-application', async (req, res) => {
 });
 
 // **أهم سطر:** تصدير الـ app
-// Vercel هيتعامل مع كل ملف `api/index.js` كأنه function
 module.exports = app;
