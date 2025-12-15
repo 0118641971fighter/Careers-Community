@@ -87,7 +87,7 @@ const translations = {
     registering: 'Konto wird erstellt...',
     password_mismatch: 'Passwörter stimmen nicht überein!',
     connection_error: 'Verbindung zum Server fehlgeschlagen.',
-    // --- Texte für Bewerbungsseite ---
+    // --- Texte für die Bewerbungsseite ---
     application_title: 'Bewerbungsformular',
     app_fullname_placeholder: 'Vollständiger Name',
     app_age_placeholder: 'Alter',
@@ -153,7 +153,7 @@ const translations = {
     registering: 'アカウントを作成中...',
     password_mismatch: 'パスワードが一致しません！',
     connection_error: 'サーバーへの接続に失敗しました。',
-    // --- 応募ページのテキスト ---
+    // --- 申請ページのテキスト ---
     application_title: '求人応募フォーム',
     app_fullname_placeholder: '氏名',
     app_age_placeholder: '年齢',
@@ -394,14 +394,15 @@ function App() {
                 <button type="submit">{t('sign_in_button')}</button>
               </form>
 
-             <div className="form-links">
-  <button type="button" style={{ background: 'none', border: 'none', color: '#d4af37', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => alert('Feature coming soon!')}>
-    Forgot Password?
-  </button>
-  <button type="button" style={{ background: 'none', border: 'none', color: '#d4af37', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => setCurrentPage('register')}>
-    Create an Account
-  </button>
-</div>
+              <div className="form-links">
+                {/* تم استبدال <a href="#"> بـ <button> لحل مشكلة الـ accessibility */}
+                <button type="button" className="link-button" onClick={() => alert('Feature coming soon!')}>
+                  {t('forgot_password')}
+                </button>
+                <button type="button" className="link-button" onClick={() => setCurrentPage('register')}>
+                  {t('create_account')}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -411,8 +412,7 @@ function App() {
         <div id="register-modal" className="modal">
           <div className="modal-overlay" onClick={() => setCurrentPage('login')}></div>
           <div className="modal-content">
-            <div className="register-form">
-              <h2>{t('register_title')}</h2>
+            <div className="register-form"><h2>{t('register_title')}</h2>
 
               <form onSubmit={handleRegister}>
                 <div className="input-group">

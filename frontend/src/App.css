@@ -10,7 +10,7 @@
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: hidden; /* منع الشريط الجانبي */
   background-color: #000000;
   font-family: "Noto Sans", sans-serif;
   transition: direction 0.3s;
@@ -242,16 +242,23 @@ button[type="submit"]:hover {
   font-size: 0.9rem;
 }
 
-.form-links a {
+/* ===== التعديل الجديد هنا ===== */
+.form-links .link-button {
+  background: none;
+  border: none;
   color: #d4af37;
-  text-decoration: none;
-  margin: 0 10px;
+  text-decoration: underline;
+  font-family: inherit; /* يرث خط العنصر الأصلي */
+  font-size: inherit;   /* يرث حجم الخط الأصلي */
+  padding: 0;
+  cursor: pointer;
   transition: color 0.3s;
 }
 
-.form-links a:hover {
+.form-links .link-button:hover {
   color: #ffd700;
 }
+/* ===== نهاية التعديل الجديد ===== */
 
 /* ============================================= */
 /*          تصميم النافذة المنبثقة (Modal)       */
@@ -504,6 +511,26 @@ button[type="submit"]:hover {
   font-family: "Noto Sans", sans-serif;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+.application-form button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #d4af37;
+  border: none;
+  border-radius: 5px;
+  color: #000000;
+  font-family: "Bebas Neue", "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.application-form button[type="submit"]:hover {
+  background-color: #b8860b;
+  transform: translateY(-2px);
 }
 
 /* ============================================= */
