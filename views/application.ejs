@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= dir %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <% if (lang === 'ar') { %>Careers Community - طلب التوظيف<% } 
+        else if (lang === 'en') { %>Careers Community - Job Application<% } 
+        else if (lang === 'zh') { %>Careers Community - 求职申请<% } 
+        else if (lang === 'ja') { %>Careers Community - 求人応募<% } 
+        else if (lang === 'de') { %>Careers Community - Stellenbewerbung<% } 
+        else if (lang === 'fr') { %>Careers Community - Candidature<% } 
+        else if (lang === 'es') { %>Careers Community - Solicitud de empleo<% } 
+        else { %>Careers Community - Application<% } %>
+    </title>
+    
+    <!-- خطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS الخارجي -->
+    <link rel="stylesheet" href="/css/application.css">
+</head>
+<body class="font-<%= lang === 'ar' ? 'arabic' : lang === 'zh' ? 'chinese' : lang === 'ja' ? 'japanese' : 'default' %>">
+    
+    <!-- خلفية النجوم -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- العناصر العائمة -->
+    <div class="floating-element" id="floating1" style="width: 200px; height: 200px;"></div>
+    <div class="floating-element" id="floating2" style="width: 150px; height: 150px;"></div>
+    
+    <!-- زر تغيير اللغة -->
+    <div class="language-selector" id="languageSelector">
+        <button class="language-btn" id="languageBtn">
+            <i class="fas fa-globe"></i>
+            <span class="current-lang"><%= langName %></span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        
+        <div class="language-dropdown" id="languageDropdown">
+            <div class="lang-option <%= lang === 'ar' ? 'active' : '' %>" data-lang="ar">
+                <span>🇸🇦</span> <span>العربية</span>
+            </div>
+            <div class="lang-option <%= lang === 'en' ? 'active' : '' %>" data-lang="en">
+                <span>🇺🇸</span> <span>English</span>
+            </div>
+            <div class="lang-option <%= lang === 'zh' ? 'active' : '' %>" data-lang="zh">
+                <span>🇨🇳</span> <span>中文 (Chinese)</span>
+            </div>
+            <div class="lang-option <%= lang === 'ja' ? 'active' : '' %>" data-lang="ja">
+                <span>🇯🇵</span> <span>日本語 (Japanese)</span>
+            </div>
+            <div class="lang-option <%= lang === 'de' ? 'active' : '' %>" data-lang="de">
+                <span>🇩🇪</span> <span>Deutsch (German)</span>
+            </div>
+            <div class="lang-option <%= lang === 'fr' ? 'active' : '' %>" data-lang="fr">
+                <span>🇫🇷</span> <span>Français (French)</span>
+            </div>
+            <div class="lang-option <%= lang === 'es' ? 'active' : '' %>" data-lang="es">
+                <span>🇪🇸</span> <span>Español (Spanish)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- الحاوية الرئيسية -->
+    <div class="application-container">
+        <!-- الهيدر -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">📋</div>
+                <div class="logo-text">Careers Community</div>
+            </div>
+            <a href="/" class="back-link">
+                <% if (lang === 'ar') { %>
+                    <i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية
+                <% } else { %>
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                <% } %>
+            </a>
+        </header>
+        
+        <!-- مؤشر الخطوات -->
+        <div class="steps-indicator">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <span>
+                    <% if (lang === 'ar') { %>المعلومات الشخصية<% } 
+                    else if (lang === 'en') { %>Personal Info<% } 
+                    else if (lang === 'zh') { %>个人信息<% } 
+                    else if (lang === 'ja') { %>個人情報<% } 
+                    else if (lang === 'de') { %>Persönliche Daten<% } 
+                    else if (lang === 'fr') { %>Informations personnelles<% } 
+                    else if (lang === 'es') { %>Información personal<% } 
+                    else { %>Personal Info<% } %>
+                </span>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <span>
+                    <% if (lang === 'ar') { %>الخبرات والمهارات<% } 
+                    else if (lang === 'en') { %>Experience & Skills<% } 
+                    else if (lang === 'zh') { %>经验与技能<% } 
+                    else if (lang === 'ja') { %>経験とスキル<% } 
+                    else if (lang === 'de') { %>Erfahrung & Fähigkeiten<% } 
+                    else if (lang === 'fr') { %>Expérience & Compétences<% } 
+                    else if (lang === 'es') { %>Experiencia y habilidades<% } 
+                    else { %>Experience & Skills<% } %>
+                </span>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <span>
+                    <% if (lang === 'ar') { %>رفع السيرة الذاتية<% } 
+                    else if (lang === 'en') { %>Upload Resume<% } 
+                    else if (lang === 'zh') { %>上传简历<% } 
+                    else if (lang === 'ja') { %>履歴書をアップロード<% } 
+                    else if (lang === 'de') { %>Lebenslauf hochladen<% } 
+                    else if (lang === 'fr') { %>Télécharger CV<% } 
+                    else if (lang === 'es') { %>Subir currículum<% } 
+                    else { %>Upload Resume<% } %>
+                </span>
+            </div>
+        </div>
+        
+        <!-- البطاقة الرئيسية -->
+        <div class="application-card">
+            <div class="page-header">
+                <h1 class="page-title text-transition">
+                    <% if (lang === 'ar') { %>طلب التوظيف<% } 
+                    else if (lang === 'en') { %>Job Application<% } 
+                    else if (lang === 'zh') { %>求职申请<% } 
+                    else if (lang === 'ja') { %>求人応募<% } 
+                    else if (lang === 'de') { %>Stellenbewerbung<% } 
+                    else if (lang === 'fr') { %>Candidature<% } 
+                    else if (lang === 'es') { %>Solicitud de empleo<% } 
+                    else { %>Application<% } %>
+                </h1>
+                <p class="page-subtitle text-transition">
+                    <% if (lang === 'ar') { %>
+                        املأ النموذج أدناه لتقديم طلبك للانضمام إلى مجتمع المهن.<br>سيتم مراجعة طلبك والاتصال بك في أقرب وقت.
+                    <% } else if (lang === 'en') { %>
+                        Fill out the form below to apply to join the Careers Community.<br>Your application will be reviewed and you'll be contacted soon.
+                    <% } else if (lang === 'zh') { %>
+                        填写以下表格申请加入职业社区。<br>您的申请将被审核，我们会尽快与您联系。
+                    <% } else if (lang === 'ja') { %>
+                        以下のフォームに記入して、キャリアコミュニティへの参加を申請してください。<br>申請内容を確認のうえ、すぐにご連絡いたします。
+                    <% } else if (lang === 'de') { %>
+                        Füllen Sie das Formular aus, um sich bei der Careers Community zu bewerben.<br>Ihre Bewerbung wird geprüft und Sie werden bald kontaktiert.
+                    <% } else if (lang === 'fr') { %>
+                        Remplissez le formulaire ci-dessous pour postuler à la communauté Careers.<br>Votre candidature sera examinée et vous serez contacté(e) prochainement.
+                    <% } else if (lang === 'es') { %>
+                        Complete el siguiente formulario para solicitar unirte a la comunidad Careers.<br>Tu solicitud será revisada y te contactaremos pronto.
+                    <% } else { %>
+                        Fill out the form to apply.<br>We'll review and contact you soon.
+                    <% } %>
+                </p>
+            </div>
+            
+            <form id="applicationForm" class="application-form">
+                <!-- الاسم -->
+                <div class="form-group">
+                    <label class="form-label required" for="fullName">
+                        <% if (lang === 'ar') { %>الاسم الكامل<% } 
+                        else if (lang === 'en') { %>Full Name<% } 
+                        else if (lang === 'zh') { %>全名<% } 
+                        else if (lang === 'ja') { %>氏名<% } 
+                        else if (lang === 'de') { %>Vollständiger Name<% } 
+                        else if (lang === 'fr') { %>Nom complet<% } 
+                        else if (lang === 'es') { %>Nombre completo<% } 
+                        else { %>Full Name<% } %>
+                    </label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" 
+                        placeholder="<% if (lang === 'ar') { %>أدخل اسمك الكامل<% } 
+                        else if (lang === 'en') { %>Enter your full name<% } 
+                        else if (lang === 'zh') { %>输入您的全名<% } 
+                        else if (lang === 'ja') { %>氏名を入力<% } 
+                        else if (lang === 'de') { %>Geben Sie Ihren vollständigen Namen ein<% } 
+                        else if (lang === 'fr') { %>Entrez votre nom complet<% } 
+                        else if (lang === 'es') { %>Ingresa tu nombre completo<% } 
+                        else { %>Full name<% } %>" 
+                        required>
+                    <div class="error-message" id="nameError">
+                        <% if (lang === 'ar') { %>الرجاء إدخال اسم صحيح<% } 
+                        else if (lang === 'en') { %>Please enter a valid name<% } 
+                        else if (lang === 'zh') { %>请输入有效姓名<% } 
+                        else if (lang === 'ja') { %>有効な名前を入力してください<% } 
+                        else if (lang === 'de') { %>Bitte geben Sie einen gültigen Namen ein<% } 
+                        else if (lang === 'fr') { %>Veuillez entrer un nom valide<% } 
+                        else if (lang === 'es') { %>Por favor, ingresa un nombre válido<% } 
+                        else { %>Please enter a valid name<% } %>
+                    </div>
+                </div>
+                
+                <!-- العمر -->
+                <div class="form-group">
+                    <label class="form-label required" for="age">
+                        <% if (lang === 'ar') { %>العمر<% } 
+                        else if (lang === 'en') { %>Age<% } 
+                        else if (lang === 'zh') { %>年龄<% } 
+                        else if (lang === 'ja') { %>年齢<% } 
+                        else if (lang === 'de') { %>Alter<% } 
+                        else if (lang === 'fr') { %>Âge<% } 
+                        else if (lang === 'es') { %>Edad<% } 
+                        else { %>Age<% } %>
+                    </label>
+                    <input type="number" id="age" name="age" class="form-input" 
+                        min="18" max="70" 
+                        placeholder="<% if (lang === 'ar') { %>أدخل عمرك<% } 
+                        else if (lang === 'en') { %>Enter your age<% } 
+                        else if (lang === 'zh') { %>输入您的年龄<% } 
+                        else if (lang === 'ja') { %>年齢を入力<% } 
+                        else if (lang === 'de') { %>Geben Sie Ihr Alter ein<% } 
+                        else if (lang === 'fr') { %>Entrez votre âge<% } 
+                        else if (lang === 'es') { %>Ingresa tu edad<% } 
+                        else { %>Your age<% } %>" 
+                        required>
+                    <div class="error-message" id="ageError">
+                        <% if (lang === 'ar') { %>العمر يجب أن يكون بين 18 و 70<% } 
+                        else if (lang === 'en') { %>Age must be between 18 and 70<% } 
+                        else if (lang === 'zh') { %>年龄必须在18至70岁之间<% } 
+                        else if (lang === 'ja') { %>年齢は18〜70歳でなければなりません<% } 
+                        else if (lang === 'de') { %>Das Alter muss zwischen 18 und 70 Jahren liegen<% } 
+                        else if (lang === 'fr') { %>L'âge doit être compris entre 18 et 70 ans<% } 
+                        else if (lang === 'es') { %>La edad debe estar entre 18 y 70<% } 
+                        else { %>Age must be 18-70<% } %>
+                    </div>
+                </div>
+                
+                <!-- سنة التخرج -->
+                <div class="form-group">
+                    <label class="form-label required" for="graduationYear">
+                        <% if (lang === 'ar') { %>سنة التخرج<% } 
+                        else if (lang === 'en') { %>Graduation Year<% } 
+                        else if (lang === 'zh') { %>毕业年份<% } 
+                        else if (lang === 'ja') { %>卒業年<% } 
+                        else if (lang === 'de') { %>Abschlussjahr<% } 
+                        else if (lang === 'fr') { %>Année d'obtention du diplôme<% } 
+                        else if (lang === 'es') { %>Año de graduación<% } 
+                        else { %>Graduation Year<% } %>
+                    </label>
+                    <select id="graduationYear" name="graduationYear" class="form-input" required>
+                        <option value="">
+                            <% if (lang === 'ar') { %>اختر سنة التخرج<% } 
+                            else if (lang === 'en') { %>Select graduation year<% } 
+                            else if (lang === 'zh') { %>选择毕业年份<% } 
+                            else if (lang === 'ja') { %>卒業年を選択<% } 
+                            else if (lang === 'de') { %>Abschlussjahr auswählen<% } 
+                            else if (lang === 'fr') { %>Sélectionnez l'année<% } 
+                            else if (lang === 'es') { %>Selecciona el año<% } 
+                            else { %>Select year<% } %>
+                        </option>
+                        <% for(let year = 2024; year >= 2000; year--) { %>
+                            <option value="<%= year %>"><%= year %></option>
+                        <% } %>
+                    </select>
+                    <div class="error-message" id="graduationError">
+                        <% if (lang === 'ar') { %>الرجاء اختيار سنة التخرج<% } 
+                        else if (lang === 'en') { %>Please select graduation year<% } 
+                        else if (lang === 'zh') { %>请选择毕业年份<% } 
+                        else if (lang === 'ja') { %>卒業年を選択してください<% } 
+                        else if (lang === 'de') { %>Bitte wählen Sie das Abschlussjahr<% } 
+                        else if (lang === 'fr') { %>Veuillez sélectionner l'année<% } 
+                        else if (lang === 'es') { %>Por favor, selecciona el año<% } 
+                        else { %>Please select year<% } %>
+                    </div>
+                </div>
+                
+                <!-- سنوات الخبرة -->
+                <div class="form-group">
+                    <label class="form-label required" for="experienceYears">
+                        <% if (lang === 'ar') { %>سنوات الخبرة<% } 
+                        else if (lang === 'en') { %>Years of Experience<% } 
+                        else if (lang === 'zh') { %>工作年限<% } 
+                        else if (lang === 'ja') { %>経験年数<% } 
+                        else if (lang === 'de') { %>Berufserfahrung<% } 
+                        else if (lang === 'fr') { %>Années d'expérience<% } 
+                        else if (lang === 'es') { %>Años de experiencia<% } 
+                        else { %>Experience<% } %>
+                    </label>
+                    <select id="experienceYears" name="experienceYears" class="form-input" required>
+                        <option value="">
+                            <% if (lang === 'ar') { %>اختر سنوات الخبرة<% } 
+                            else if (lang === 'en') { %>Select experience<% } 
+                            else if (lang === 'zh') { %>选择经验<% } 
+                            else if (lang === 'ja') { %>経験を選択<% } 
+                            else if (lang === 'de') { %>Erfahrung auswählen<% } 
+                            else if (lang === 'fr') { %>Sélectionnez l'expérience<% } 
+                            else if (lang === 'es') { %>Selecciona experiencia<% } 
+                            else { %>Select experience<% } %>
+                        </option>
+                        <option value="0">
+                            <% if (lang === 'ar') { %>لا توجد خبرة<% } 
+                            else if (lang === 'en') { %>No experience<% } 
+                            else if (lang === 'zh') { %>无经验<% } 
+                            else if (lang === 'ja') { %>経験なし<% } 
+                            else if (lang === 'de') { %>Keine Erfahrung<% } 
+                            else if (lang === 'fr') { %>Aucune expérience<% } 
+                            else if (lang === 'es') { %>Sin experiencia<% } 
+                            else { %>No experience<% } %>
+                        </option>
+                        <option value="1-2">
+                            <% if (lang === 'ar') { %>1-2 سنوات<% } 
+                            else if (lang === 'en') { %>1-2 years<% } 
+                            else if (lang === 'zh') { %>1-2年<% } 
+                            else if (lang === 'ja') { %>1-2年<% } 
+                            else if (lang === 'de') { %>1-2 Jahre<% } 
+                            else if (lang === 'fr') { %>1-2 ans<% } 
+                            else if (lang === 'es') { %>1-2 años<% } 
+                            else { %>1-2 years<% } %>
+                        </option>
+                        <option value="3-5">3-5 <%= lang === 'ar' ? 'سنين' : lang === 'en' ? 'years' : lang === 'zh' ? '年' : lang === 'ja' ? '年' : lang === 'de' ? 'Jahre' : lang === 'fr' ? 'ans' : lang === 'es' ? 'años' : 'years' %></option>
+                        <option value="5-10">5-10 <%= lang === 'ar' ? 'سنين' : lang === 'en' ? 'years' : lang === 'zh' ? '年' : lang === 'ja' ? '年' : lang === 'de' ? 'Jahre' : lang === 'fr' ? 'ans' : lang === 'es' ? 'años' : 'years' %></option>
+                        <option value="10+">
+                            <% if (lang === 'ar') { %>أكثر من 10 سنوات<% } 
+                            else if (lang === 'en') { %>10+ years<% } 
+                            else if (lang === 'zh') { %>10年以上<% } 
+                            else if (lang === 'ja') { %>10年以上<% } 
+                            else if (lang === 'de') { %>Mehr als 10 Jahre<% } 
+                            else if (lang === 'fr') { %>Plus de 10 ans<% } 
+                            else if (lang === 'es') { %>Más de 10 años<% } 
+                            else { %>10+ years<% } %>
+                        </option>
+                    </select>
+                    <div class="error-message" id="experienceError">
+                        <% if (lang === 'ar') { %>الرجاء اختيار سنوات الخبرة<% } 
+                        else if (lang === 'en') { %>Please select experience<% } 
+                        else if (lang === 'zh') { %>请选择经验<% } 
+                        else if (lang === 'ja') { %>経験を選択してください<% } 
+                        else if (lang === 'de') { %>Bitte wählen Sie die Erfahrung<% } 
+                        else if (lang === 'fr') { %>Veuillez sélectionner l'expérience<% } 
+                        else if (lang === 'es') { %>Por favor, selecciona experiencia<% } 
+                        else { %>Please select experience<% } %>
+                    </div>
+                </div>
+                
+                <!-- المهارات -->
+                <div class="form-group full-width">
+                    <label class="form-label required" for="skills">
+                        <% if (lang === 'ar') { %>المهارات<% } 
+                        else if (lang === 'en') { %>Skills<% } 
+                        else if (lang === 'zh') { %>技能<% } 
+                        else if (lang === 'ja') { %>スキル<% } 
+                        else if (lang === 'de') { %>Fähigkeiten<% } 
+                        else if (lang === 'fr') { %>Compétences<% } 
+                        else if (lang === 'es') { %>Habilidades<% } 
+                        else { %>Skills<% } %>
+                    </label>
+                    <textarea id="skills" name="skills" class="form-input" 
+                        placeholder="<% if (lang === 'ar') { %>اكتب مهاراتك (مثال: JavaScript, React, Node.js, تصميم ويب, إدارة مشاريع...)<% } 
+                        else if (lang === 'en') { %>List your skills (e.g., JavaScript, React, Node.js, Web Design, Project Management...)<% } 
+                        else if (lang === 'zh') { %>列出您的技能（例如：JavaScript、React、Node.js、网页设计、项目管理...）<% } 
+                        else if (lang === 'ja') { %>スキルを記入（例：JavaScript、React、Node.js、Webデザイン、プロジェクト管理...）<% } 
+                        else if (lang === 'de') { %>Ihre Fähigkeiten auflisten (z.B. JavaScript, React, Node.js, Webdesign, Projektmanagement...)<% } 
+                        else if (lang === 'fr') { %>Listez vos compétences (ex: JavaScript, React, Node.js, Design Web, Gestion de projet...)<% } 
+                        else if (lang === 'es') { %>Enumera tus habilidades (ej: JavaScript, React, Node.js, Diseño web, Gestión de proyectos...)<% } 
+                        else { %>List your skills (e.g., JavaScript, React...)<% } %>" 
+                        required></textarea>
+                    <div class="error-message" id="skillsError">
+                        <% if (lang === 'ar') { %>الرجاء إدخال مهاراتك<% } 
+                        else if (lang === 'en') { %>Please enter your skills<% } 
+                        else if (lang === 'zh') { %>请输入您的技能<% } 
+                        else if (lang === 'ja') { %>スキルを入力してください<% } 
+                        else if (lang === 'de') { %>Bitte geben Sie Ihre Fähigkeiten ein<% } 
+                        else if (lang === 'fr') { %>Veuillez entrer vos compétences<% } 
+                        else if (lang === 'es') { %>Por favor, ingresa tus habilidades<% } 
+                        else { %>Please enter skills<% } %>
+                    </div>
+                </div>
+                
+                <!-- رفع الملف -->
+                <div class="form-group full-width">
+                    <label class="form-label" for="cv">
+                        <% if (lang === 'ar') { %>السيرة الذاتية (CV)<% } 
+                        else if (lang === 'en') { %>Resume (CV)<% } 
+                        else if (lang === 'zh') { %>简历 (CV)<% } 
+                        else if (lang === 'ja') { %>履歴書 (CV)<% } 
+                        else if (lang === 'de') { %>Lebenslauf (CV)<% } 
+                        else if (lang === 'fr') { %>CV<% } 
+                        else if (lang === 'es') { %>Currículum (CV)<% } 
+                        else { %>Resume<% } %>
+                    </label>
+                    <div class="file-upload">
+                        <input type="file" id="cv" name="cv" class="file-input" 
+                               accept=".pdf,.doc,.docx,.jpg,.png">
+                        <div class="file-upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="file-upload-text">
+                            <% if (lang === 'ar') { %>انقر لتحميل السيرة الذاتية<% } 
+                            else if (lang === 'en') { %>Click to upload resume<% } 
+                            else if (lang === 'zh') { %>点击上传简历<% } 
+                            else if (lang === 'ja') { %>クリックして履歴書をアップロード<% } 
+                            else if (lang === 'de') { %>Zum Hochladen klicken<% } 
+                            else if (lang === 'fr') { %>Cliquez pour télécharger<% } 
+                            else if (lang === 'es') { %>Haz clic para subir<% } 
+                            else { %>Upload resume<% } %>
+                        </div>
+                        <div class="file-upload-note">
+                            <% if (lang === 'ar') { %>الملفات المسموحة: PDF, DOC, DOCX, JPG, PNG (حتى 5MB)<% } 
+                            else if (lang === 'en') { %>Allowed: PDF, DOC, DOCX, JPG, PNG (max 5MB)<% } 
+                            else if (lang === 'zh') { %>支持格式：PDF、DOC、DOCX、JPG、PNG（最大5MB）<% } 
+                            else if (lang === 'ja') { %>許可された形式: PDF、DOC、DOCX、JPG、PNG（最大5MB）<% } 
+                            else if (lang === 'de') { %>Erlaubt: PDF, DOC, DOCX, JPG, PNG (max. 5MB)<% } 
+                            else if (lang === 'fr') { %>Formats acceptés: PDF, DOC, DOCX, JPG, PNG (max 5 Mo)<% } 
+                            else if (lang === 'es') { %>Formatos permitidos: PDF, DOC, DOCX, JPG, PNG (máx. 5 MB)<% } 
+                            else { %>PDF, DOC, DOCX, JPG, PNG (5MB max)<% } %>
+                        </div>
+                        <div class="file-name" id="fileName"></div>
+                    </div>
+                </div>
+                
+                <!-- زر الإرسال -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span>
+                            <% if (lang === 'ar') { %>إرسال الطلب<% } 
+                            else if (lang === 'en') { %>Submit Application<% } 
+                            else if (lang === 'zh') { %>提交申请<% } 
+                            else if (lang === 'ja') { %>応募を送信<% } 
+                            else if (lang === 'de') { %>Bewerbung absenden<% } 
+                            else if (lang === 'fr') { %>Soumettre la candidature<% } 
+                            else if (lang === 'es') { %>Enviar solicitud<% } 
+                            else { %>Submit<% } %>
+                        </span>
+                        <i class="fas fa-paper-plane btn-icon"></i>
+                    </button>
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // --- نفس دوال صفحة Signup (createStars, applyDirectionStyles, validateForm, etc.) ---
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 80;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function applyDirectionStyles() {
+            const isRTL = '<%= dir %>' === 'rtl';
+            const floating1 = document.getElementById('floating1');
+            const floating2 = document.getElementById('floating2');
+            const langSelector = document.getElementById('languageSelector');
+            const backLink = document.querySelector('.back-link i');
+
+            if (floating1) {
+                floating1.style.top = '10%';
+                floating1.style[isRTL ? 'left' : 'right'] = '5%';
+            }
+            if (floating2) {
+                floating2.style.bottom = '20%';
+                floating2.style[isRTL ? 'right' : 'left'] = '10%';
+            }
+            if (langSelector) {
+                langSelector.style[isRTL ? 'left' : 'right'] = '20px';
+            }
+            if (backLink) {
+                backLink.className = isRTL ? 'fas fa-arrow-right' : 'fas fa-arrow-left';
+            }
+        }
+
+        // عرض اسم الملف
+        document.getElementById('cv')?.addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : '';
+            const fileNameElement = document.getElementById('fileName');
+            if (fileName) {
+                fileNameElement.textContent = `<%= lang === 'ar' ? 'الملف: ' : lang === 'en' ? 'File: ' : lang === 'zh' ? '文件: ' : lang === 'ja' ? 'ファイル: ' : lang === 'de' ? 'Datei: ' : lang === 'fr' ? 'Fichier: ' : lang === 'es' ? 'Archivo: ' : 'File: ' %>${fileName}`;
+                fileNameElement.style.display = 'block';
+                if (this.files[0].size > 5 * 1024 * 1024) {
+                    alert('<%= lang === "ar" ? "⚠️ حجم الملف كبير جداً! الحد الأقصى 5MB" : lang === "en" ? "⚠️ File too large! Max 5MB" : "⚠️ File size exceeds limit (5MB)" %>');
+                    this.value = '';
+                    fileNameElement.style.display = 'none';
+                }
+            } else {
+                fileNameElement.style.display = 'none';
+            }
+        });
+
+        // التحقق من النموذج
+        function validateForm() {
+            let isValid = true;
+            const fields = [
+                { id: 'fullName', errorId: 'nameError', condition: v => v.trim().length >= 2 },
+                { id: 'age', errorId: 'ageError', condition: v => v >= 18 && v <= 70 },
+                { id: 'graduationYear', errorId: 'graduationError', condition: v => v !== '' },
+                { id: 'experienceYears', errorId: 'experienceError', condition: v => v !== '' },
+                { id: 'skills', errorId: 'skillsError', condition: v => v.trim().length >= 5 }
+            ];
+            
+            fields.forEach(field => {
+                const input = document.getElementById(field.id);
+                const error = document.getElementById(field.errorId);
+                const value = input.type === 'number' ? parseInt(input.value) : input.value;
+                if (!field.condition(value)) {
+                    error.style.display = 'block';
+                    input.classList.add('error');
+                    isValid = false;
+                } else {
+                    error.style.display = 'none';
+                    input.classList.remove('error');
+                }
+            });
+            return isValid;
+        }
+
+        // إرسال النموذج
+        document.getElementById('applicationForm')?.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!validateForm()) return;
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const progressBar = document.getElementById('progressBar');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span><%= lang === 'ar' ? 'جاري الإرسال...' : lang === 'en' ? 'Sending...' : 'Submitting...' %></span><i class="fas fa-spinner fa-spin btn-icon"></i>`;
+            progressBar.style.width = '30%';
+            
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                age: document.getElementById('age').value,
+                graduationYear: document.getElementById('graduationYear').value,
+                experienceYears: document.getElementById('experienceYears').value,
+                skills: document.getElementById('skills').value,
+                cvFile: document.getElementById('cv').files[0]?.name || null
+            };
+            
+            try {
+                progressBar.style.width = '60%';
+                const response = await fetch('/submit-application', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                progressBar.style.width = '90%';
+                const result = await response.json();
+                
+                if (result.success) {
+                    progressBar.style.width = '100%';
+                    progressBar.style.background = 'linear-gradient(90deg, #4CAF50, #45a049)';
+                    submitBtn.innerHTML = `<span><%= lang === 'ar' ? 'تم الإرسال بنجاح!' : lang === 'en' ? 'Sent successfully!' : 'Success!' %></span><i class="fas fa-check btn-icon"></i>`;
+                    submitBtn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+                    setTimeout(() => window.location.href = '/success', 2000);
+                } else {
+                    throw new Error(result.message || 'Error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                progressBar.style.width = '0%';
+                alert('<%= lang === "ar" ? "❌ حدث خطأ في الإرسال" : "❌ Submission failed" %>:\n' + error.message);
+            }
+        });
+
+        // تغيير اللغة (نفس منطق Signup)
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        if (languageBtn && languageDropdown) {
+            languageBtn.addEventListener('click', e => {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+            });
+            document.addEventListener('click', e => {
+                if (!e.target.closest('.language-selector')) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.addEventListener('click', async e => {
+                    e.preventDefault();
+                    const lang = opt.dataset.lang;
+                    const langName = opt.querySelector('span:last-child').textContent.trim();
+                    document.body.classList.add('page-transition');
+                    languageBtn.classList.add('changing');
+                    try {
+                        const res = await fetch('/change-language', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ lang, langName })
+                        });
+                        const result = await res.json();
+                        if (result.success) {
+                            setTimeout(() => window.location.reload(), 800);
+                        } else {
+                            throw new Error('Failed');
+                        }
+                    } catch (err) {
+                        console.error('Language change error:', err);
+                        languageBtn.classList.remove('changing');
+                    }
+                });
+            });
+        }
+
+        // عند التحميل
+        window.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            applyDirectionStyles();
+            
+            const card = document.querySelector('.application-card');
+            if (card) {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>

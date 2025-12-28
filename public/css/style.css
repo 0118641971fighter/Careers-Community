@@ -1,0 +1,58 @@
+/* public/css/style.css */
+:root {
+    --gold-primary: #FFD700;
+    --gold-secondary: #FFA500;
+    --gold-light: #FFF8DC;
+    --black-primary: #000000;
+    --black-secondary: #1a1a1a;
+    --black-light: #333333;
+}
+
+/* تأثيرات عامة للصفحات الأخرى */
+body {
+    background: var(--black-primary);
+    color: var(--gold-primary);
+    font-family: 'Poppins', 'El Messiri', sans-serif;
+}
+
+/* تنسيقات للأزرار في جميع الصفحات */
+.gold-btn {
+    background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--black-primary);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.gold-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* تنسيقات للعنواين */
+.gold-heading {
+    background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* تنسيقات للبطاقات */
+.gold-card {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.gold-card:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.3);
+    transform: translateY(-5px);
+}

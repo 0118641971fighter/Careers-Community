@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= dir %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= lang === 'ar' ? 'انطلق نحو مستقبلك المهني - Careers Community' : 'Launch Your Career - Careers Community' %></title>
+    
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ملفات CSS الخاصة -->
+    <link rel="stylesheet" href="/css/translations.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/splash.css">
+    
+    <style>
+        /* اتجاه القائمة المنسدلة - سيتم إضافة الاتجاه عبر JS */
+        .language-dropdown.rtl-direction {
+            left: 0;
+            right: auto;
+        }
+        
+        .language-dropdown.ltr-direction {
+            right: 0;
+            left: auto;
+        }
+        
+        /* اتجاه العناصر العائمة - سيتم إضافة الاتجاه عبر JS */
+        .floating-element.rtl-pos1 {
+            top: 10%;
+            right: 5%;
+            left: auto;
+        }
+        
+        .floating-element.ltr-pos1 {
+            top: 10%;
+            left: 5%;
+            right: auto;
+        }
+        
+        .floating-element.rtl-pos2 {
+            bottom: 15%;
+            left: 8%;
+            right: auto;
+        }
+        
+        .floating-element.ltr-pos2 {
+            bottom: 15%;
+            right: 8%;
+            left: auto;
+        }
+        
+        /* اتجاه السهم في الزر - سيتم إضافة الاتجاه عبر JS */
+        .start-btn .rtl-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="font-<%= lang === 'ar' ? 'arabic' : lang === 'zh' ? 'chinese' : lang === 'ja' ? 'japanese' : 'english' %>">
+    <!-- خلفية النجوم -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- عناصر عائمة -->
+    <div class="floating-element" id="floating1" style="width: 300px; height: 300px;"></div>
+    <div class="floating-element" id="floating2" style="width: 200px; height: 200px;"></div>
+    
+    <!-- الحاوية الرئيسية -->
+    <div class="splash-container">
+        <!-- الهيدر -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">🚀</div>
+                <div class="logo-text">Careers Community</div>
+            </div>
+            
+            <!-- زر اللغة -->
+            <div class="language-selector">
+                <button class="language-btn interactive-text" id="languageBtn">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang"><%= langName %></span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="lang-option <%= lang === 'ar' ? 'active' : '' %>" data-lang="ar">
+                        <span class="flag">🇸🇦</span>
+                        <span>العربية</span>
+                    </div>
+                    <div class="lang-option <%= lang === 'en' ? 'active' : '' %>" data-lang="en">
+                        <span class="flag">🇺🇸</span>
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option <%= lang === 'zh' ? 'active' : '' %>" data-lang="zh">
+                        <span class="flag">🇨🇳</span>
+                        <span>中文 (Chinese)</span>
+                    </div>
+                    <div class="lang-option <%= lang === 'ja' ? 'active' : '' %>" data-lang="ja">
+                        <span class="flag">🇯🇵</span>
+                        <span>日本語 (Japanese)</span>
+                    </div>
+                    <div class="lang-option <%= lang === 'de' ? 'active' : '' %>" data-lang="de">
+                        <span class="flag">🇩🇪</span>
+                        <span>Deutsch (German)</span>
+                    </div>
+                    <div class="lang-option <%= lang === 'fr' ? 'active' : '' %>" data-lang="fr">
+                        <span class="flag">🇫🇷</span>
+                        <span>Français (French)</span>
+                    </div>
+                    <div class="lang-option <%= lang === 'es' ? 'active' : '' %>" data-lang="es">
+                        <span class="flag">🇪🇸</span>
+                        <span>Español (Spanish)</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- المحتوى الرئيسي -->
+        <main class="hero-content">
+            <h1 class="main-title text-transition" id="mainTitle">
+                <% if (lang === 'ar') { %>
+                    انطلق نحو مستقبلك المهني
+                <% } else if (lang === 'en') { %>
+                    Launch Towards Your Professional Future
+                <% } else if (lang === 'zh') { %>
+                    迈向您的职业未来
+                <% } else if (lang === 'ja') { %>
+                    プロの未来へ向かって発進
+                <% } else if (lang === 'de') { %>
+                    Starten Sie in Ihre berufliche Zukunft
+                <% } else if (lang === 'fr') { %>
+                    Lancez-vous vers votre avenir professionnel
+                <% } else if (lang === 'es') { %>
+                    Despega hacia tu futuro profesional
+                <% } else { %>
+                    Launch Your Career
+                <% } %>
+            </h1>
+            
+            <p class="subtitle text-transition" id="subtitle">
+                <% if (lang === 'ar') { %>
+                    مجتمع المهن هو منصة متكاملة تجمع بين الطموح والفرص.<br>انضم إلى آلاف المحترفين الذين وجدوا طريقهم نحو النجاح.
+                <% } else if (lang === 'en') { %>
+                    Careers Community is an integrated platform that brings together ambition and opportunities.<br>Join thousands of professionals who have found their path to success.
+                <% } else if (lang === 'zh') { %>
+                    职业社区是一个综合平台，汇集了抱负和机会。<br>加入成千上万已经找到成功道路的专业人士。
+                <% } else if (lang === 'ja') { %>
+                    キャリアコミュニティは、野心と機会を結びつける統合プラットフォームです。<br>成功への道を見つけた何千人もの専門家に加わりましょう。
+                <% } else if (lang === 'de') { %>
+                    Careers Community ist eine integrierte Plattform, die Ambitionen und Möglichkeiten zusammenbringt.<br>Schließen Sie sich Tausenden von Fachleuten an, die ihren Weg zum Erfolg gefunden haben.
+                <% } else if (lang === 'fr') { %>
+                    Careers Community est une plateforme intégrée qui rassemble l'ambition et les opportunités.<br>Rejoignez des milliers de professionnels qui ont trouvé leur chemin vers le succès.
+                <% } else if (lang === 'es') { %>
+                    Careers Community es una plataforma integrada que reúne ambición y oportunidades.<br>Únete a miles de profesionales que han encontrado su camino al éxito.
+                <% } else { %>
+                    A platform connecting ambition with opportunity
+                <% } %>
+            </p>
+            
+            <a href="/signup" class="start-btn btn-transition interactive-text" id="startBtn">
+                <span class="btn-text">
+                    <% if (lang === 'ar') { %>
+                        ابدأ رحلتك الآن
+                    <% } else if (lang === 'en') { %>
+                        Start Your Journey Now
+                    <% } else if (lang === 'zh') { %>
+                        立即开始您的旅程
+                    <% } else if (lang === 'ja') { %>
+                        今すぐ旅を始めましょう
+                    <% } else if (lang === 'de') { %>
+                        Starten Sie jetzt Ihre Reise
+                    <% } else if (lang === 'fr') { %>
+                        Commencez votre voyage maintenant
+                    <% } else if (lang === 'es') { %>
+                        Comienza tu viaje ahora
+                    <% } else { %>
+                        Start Now
+                    <% } %>
+                </span>
+                <i class="fas fa-arrow-right btn-icon" id="btnIcon"></i>
+            </a>
+        </main>
+        
+        <!-- المميزات -->
+        <section class="features stagger-fade-in">
+            <div class="feature-card card-transition">
+                <div class="feature-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3 class="feature-title">
+                    <% if (lang === 'ar') { %>
+                        سيرة ذاتية احترافية
+                    <% } else if (lang === 'en') { %>
+                        Professional Resume
+                    <% } else if (lang === 'zh') { %>
+                        专业简历
+                    <% } else if (lang === 'ja') { %>
+                        プロフェッショナルな履歴書
+                    <% } else if (lang === 'de') { %>
+                        Professioneller Lebenslauf
+                    <% } else if (lang === 'fr') { %>
+                        CV professionnel
+                    <% } else if (lang === 'es') { %>
+                        Currículum profesional
+                    <% } else { %>
+                        Professional CV
+                    <% } %>
+                </h3>
+                <p class="feature-desc">
+                    <% if (lang === 'ar') { %>
+                        أنشئ سيرتك الذاتية باحترافية مع قوالب مصممة بعناية
+                    <% } else if (lang === 'en') { %>
+                        Create your resume professionally with carefully designed templates
+                    <% } else if (lang === 'zh') { %>
+                        使用精心设计的模板专业创建您的简历
+                    <% } else if (lang === 'ja') { %>
+                        慎重に設計されたテンプレートで履歴書をプロフェッショナルに作成
+                    <% } else if (lang === 'de') { %>
+                        Erstellen Sie Ihren Lebenslauf professionell mit sorgfältig gestalteten Vorlagen
+                    <% } else if (lang === 'fr') { %>
+                        Créez votre CV professionnellement avec des modèles soigneusement conçus
+                    <% } else if (lang === 'es') { %>
+                        Crea tu currículum profesionalmente con plantillas cuidadosamente diseñadas
+                    <% } else { %>
+                        Professional resume creation
+                    <% } %>
+                </p>
+            </div>
+            
+            <div class="feature-card card-transition">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="feature-title">
+                    <% if (lang === 'ar') { %>
+                        فرص عمل متميزة
+                    <% } else if (lang === 'en') { %>
+                        Distinguished Job Opportunities
+                    <% } else if (lang === 'zh') { %>
+                        卓越工作机会
+                    <% } else if (lang === 'ja') { %>
+                        卓越した仕事の機会
+                    <% } else if (lang === 'de') { %>
+                        Hervorragende Arbeitsmöglichkeiten
+                    <% } else if (lang === 'fr') { %>
+                        Opportunités d'emploi distinguées
+                    <% } else if (lang === 'es') { %>
+                        Oportunidades laborales distinguidas
+                    <% } else { %>
+                        Job Opportunities
+                    <% } %>
+                </h3>
+                <p class="feature-desc">
+                    <% if (lang === 'ar') { %>
+                        تصفح آلاف الفرص الوظيفية من أفضل الشركات
+                    <% } else if (lang === 'en') { %>
+                        Browse thousands of job opportunities from the best companies
+                    <% } else if (lang === 'zh') { %>
+                        浏览来自最佳公司的数千个工作机会
+                    <% } else if (lang === 'ja') { %>
+                        最高の企業からの何千もの仕事の機会を閲覧
+                    <% } else if (lang === 'de') { %>
+                        Durchsuchen Sie Tausende von Arbeitsmöglichkeiten der besten Unternehmen
+                    <% } else if (lang === 'fr') { %>
+                        Parcourez des milliers d'opportunités d'emploi des meilleures entreprises
+                    <% } else if (lang === 'es') { %>
+                        Navega por miles de oportunidades laborales de las mejores empresas
+                    <% } else { %>
+                        Browse job opportunities
+                    <% } %>
+                </p>
+            </div>
+            
+            <div class="feature-card card-transition">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">
+                    <% if (lang === 'ar') { %>
+                        مجتمع احترافي
+                    <% } else if (lang === 'en') { %>
+                        Professional Community
+                    <% } else if (lang === 'zh') { %>
+                        专业社区
+                    <% } else if (lang === 'ja') { %>
+                        プロフェッショナルコミュニティ
+                    <% } else if (lang === 'de') { %>
+                        Professionelle Gemeinschaft
+                    <% } else if (lang === 'fr') { %>
+                        Communauté professionnelle
+                    <% } else if (lang === 'es') { %>
+                        Comunidad profesional
+                    <% } else { %>
+                        Professional Community
+                    <% } %>
+                </h3>
+                <p class="feature-desc">
+                    <% if (lang === 'ar') { %>
+                        تواصل مع خبراء ومحترفين في مجالك
+                    <% } else if (lang === 'en') { %>
+                        Connect with experts and professionals in your field
+                    <% } else if (lang === 'zh') { %>
+                        与您领域的专家和专业人士联系
+                    <% } else if (lang === 'ja') { %>
+                        あなたの分野の専門家やプロフェッショナルとつながる
+                    <% } else if (lang === 'de') { %>
+                        Vernetzen Sie sich mit Experten und Fachleuten in Ihrem Bereich
+                    <% } else if (lang === 'fr') { %>
+                        Connectez-vous avec des experts et des professionnels de votre domaine
+                    <% } else if (lang === 'es') { %>
+                        Conéctate con expertos y profesionales en tu campo
+                    <% } else { %>
+                        Connect with professionals
+                    <% } %>
+                </p>
+            </div>
+        </section>
+        
+        <!-- الفوتر -->
+        <footer class="footer">
+            <div class="social-links">
+                <a href="#" class="social-icon interactive-text">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-icon interactive-text">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon interactive-text">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon interactive-text">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+            
+            <p class="copyright">
+                © <%= new Date().getFullYear() %> Careers Community. 
+                <% if (lang === 'ar') { %>
+                    جميع الحقوق محفوظة.
+                <% } else if (lang === 'en') { %>
+                    All rights reserved.
+                <% } else if (lang === 'zh') { %>
+                    版权所有。
+                <% } else if (lang === 'ja') { %>
+                    全著作権所有。
+                <% } else if (lang === 'de') { %>
+                    Alle Rechte vorbehalten.
+                <% } else if (lang === 'fr') { %>
+                    Tous droits réservés.
+                <% } else if (lang === 'es') { %>
+                    Todos los derechos reservados.
+                <% } else { %>
+                    All rights reserved.
+                <% } %>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // إنشاء النجوم
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // تطبيق الاتجاهات بناءً على اللغة
+        function applyDirectionStyles() {
+            const isRTL = '<%= dir %>' === 'rtl';
+            const languageDropdown = document.getElementById('languageDropdown');
+            const floating1 = document.getElementById('floating1');
+            const floating2 = document.getElementById('floating2');
+            const btnIcon = document.getElementById('btnIcon');
+            
+            // اتجاه القائمة المنسدلة
+            if (languageDropdown) {
+                languageDropdown.classList.remove('rtl-direction', 'ltr-direction');
+                languageDropdown.classList.add(isRTL ? 'rtl-direction' : 'ltr-direction');
+            }
+            
+            // اتجاه العناصر العائمة
+            if (floating1) {
+                floating1.classList.remove('rtl-pos1', 'ltr-pos1');
+                floating1.classList.add(isRTL ? 'rtl-pos1' : 'ltr-pos1');
+            }
+            
+            if (floating2) {
+                floating2.classList.remove('rtl-pos2', 'ltr-pos2');
+                floating2.classList.add(isRTL ? 'rtl-pos2' : 'ltr-pos2');
+            }
+            
+            // اتجاه سهم الزر
+            if (btnIcon) {
+                if (isRTL) {
+                    btnIcon.classList.add('rtl-arrow');
+                } else {
+                    btnIcon.classList.remove('rtl-arrow');
+                }
+            }
+        }
+        
+        // إدارة اللغة
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+        
+        if (languageBtn && languageDropdown) {
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-selector')) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+            
+            // تغيير اللغة
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    
+                    const lang = this.dataset.lang;
+                    const langName = this.querySelector('span:last-child').textContent;
+                    
+                    // إضافة تأثير التغيير
+                    document.body.classList.add('page-transition');
+                    languageBtn.classList.add('changing');
+                    
+                    // تطبيق تأثيرات على النصوص
+                    const textElements = document.querySelectorAll('.text-transition');
+                    textElements.forEach(el => {
+                        el.classList.add('lang-change-effect');
+                    });
+                    
+                    // إرسال طلب تغيير اللغة
+                    try {
+                        const response = await fetch('/change-language', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ lang, langName })
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            // إعادة تحميل الصفحة بعد تأثير
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 800);
+                        } else {
+                            throw new Error(result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error changing language:', error);
+                        languageBtn.classList.remove('changing');
+                    }
+                });
+            });
+        }
+        
+        // تأثيرات عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            applyDirectionStyles();
+            
+            // إضافة تأثيرات على العناصر
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // إضافة تأثيرات على النصوص
+            const mainTitle = document.getElementById('mainTitle');
+            if (mainTitle) {
+                mainTitle.classList.add('text-transition');
+            }
+            
+            const subtitle = document.getElementById('subtitle');
+            if (subtitle) {
+                subtitle.classList.add('text-transition');
+            }
+        });
+    </script>
+</body>
+</html>

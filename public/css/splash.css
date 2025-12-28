@@ -1,0 +1,304 @@
+/* أنماط خاصة بصفحة البداية */
+.splash-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    margin-bottom: 60px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    color: #FFD700;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* زر اللغة */
+.language-selector {
+    position: relative;
+}
+
+.language-btn {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #FFD700;
+    transform: translateY(-2px);
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 15px;
+    padding: 10px;
+    min-width: 200px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1000;
+}
+
+.language-dropdown.show {
+    display: block;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #FFD700;
+}
+
+.lang-option:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.lang-option.active {
+    background: rgba(255, 215, 0, 0.15);
+    border-left: 3px solid #FFD700;
+}
+
+.flag {
+    font-size: 1.2rem;
+}
+
+/* المحتوى الرئيسي */
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 80px;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: rgba(255, 215, 0, 0.9);
+    line-height: 1.6;
+}
+
+/* زر البدء */
+.start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: #000;
+    text-decoration: none;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.start-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.start-btn:hover::before {
+    left: 100%;
+}
+
+.start-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* المميزات */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.feature-card {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #FFD700;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #FFD700;
+}
+
+.feature-desc {
+    font-size: 1rem;
+    color: rgba(255, 215, 0, 0.8);
+    line-height: 1.6;
+}
+
+/* الفوتر */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0 20px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.social-icon {
+    color: #FFD700;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #FFA500;
+    transform: translateY(-3px);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 215, 0, 0.6);
+    margin-top: 20px;
+}
+
+/* عناصر عائمة */
+.floating-element {
+    position: absolute;
+    border: 1px solid rgba(255, 215, 0, 0.05);
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(100px, 100px) rotate(360deg); }
+}
+
+/* التجاوب */
+@media (max-width: 1024px) {
+    .main-title { font-size: 3rem; }
+    .subtitle { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .main-title { font-size: 2.5rem; }
+    .subtitle { font-size: 1.2rem; }
+    .features { grid-template-columns: 1fr; }
+    .start-btn { padding: 15px 40px; font-size: 1.1rem; }
+    .header { flex-direction: column; gap: 20px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .main-title { font-size: 2rem; }
+    .logo-text { font-size: 1.5rem; }
+    .feature-card { padding: 30px 20px; }
+}
